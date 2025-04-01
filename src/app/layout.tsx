@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+
 import { Orbitron, Saira_Semi_Condensed } from "next/font/google";
 import "./globals.css";
-import { Input } from "@/components/ui/input";
-import { ShoppingCart } from "lucide-react";
+import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/ui/footer";
+
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -14,7 +15,7 @@ const orbitron = Orbitron({
 });
 
 const sairaSemiCondensed = Saira_Semi_Condensed({
-  variable: "--font-saira-semi-condensed",
+  variable: "--font-saira",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"]
@@ -35,28 +36,28 @@ export default function RootLayout({
       <body
         className={`${orbitron.variable} ${sairaSemiCondensed.variable} antialiased`}
       >
-        <header className="flex justify-around items-center w-screen">
-          <Link href="/">
-            <Image
-            src="/logo.png"
-            alt="Logo de Laser no Sekai"
-            width={140}
-            height={140}
-            className="mx-auto my-4"
-          />
-            </Link>
+        <Header />
 
+        <nav className="flex justify-center w-screen">
+          <ul className="flex justify-around items-center w-2/3 h-12">
+            <li>
+              <Link href="/">Inicio</Link>
+            </li>
+            <li>
+              <Link href="/productos">Tienda</Link>
+            </li>
+            <li>
+              <Link href="/productos">Promociónes</Link>
+            </li>
+            <li>
+              <Link href="/ayuda">Ayuda</Link>
+            </li>
+          </ul>
+        </nav>
 
-          <Input className="w-2/5" type="search" placeholder="Buscar producto"></Input>
-
-          <Link
-            href="/carrito"
-            className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200"
-          >
-            <ShoppingCart className="text-black"/>
-          </Link>
-        </header>
         {children}
+
+        <Footer />
       </body>
     </html>
   );
