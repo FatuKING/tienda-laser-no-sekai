@@ -1,50 +1,55 @@
-import { Instagram } from 'lucide-react';
 import { PhoneCall } from 'lucide-react';
 import { Mail } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import Link from "next/link";
-import Image from "next/image";
+import { JSX } from 'react';
 
 export function Footer () {
+    type NavItem = {
+        readonly url: string,
+        readonly name: string,
+        readonly icon?: JSX.Element;
+    }
+
+    const routes: readonly NavItem[] = [
+        {url: '/productos/llaveros', name: 'Llaveros'},
+        {url: '/productos/cuadros', name: 'Cuadros'},
+        {url: '/productos/separadores', name: 'Separadores'},
+        {url: '/productos/cajas', name: 'Cajas'},
+        {url: '/productos/otros', name: 'Otros'}]
+    
+    const contact: readonly NavItem[] = [
+        {url: 'https://wa.me/+5491123940417', name: '+54 9 11 2394 0417', icon: <PhoneCall size={20}/>},
+        {url: 'https://www.instagram.com/lasernosekai/', name: 'contact@lasernosekai.com', icon: <Mail size={20}/>},
+        {url: '', name: 'Regina 2039, Don Torcuato, Buenos Aires.', icon: <MapPin size={20}/>},]
+
     return(
-        <footer className="flex justify-around w-screen bg-[#13002D] text-white p-4">
-        <ul>
-          <h6 className="font-semibold">Categorias</h6>
-          <li>
-            <Link className="text-gray-300 hover:text-white hover:border-b-1" href="/productos/llaveros">Llaveros</Link>
+        <footer className="flex justify-around w-screen bg-[#13002D] text-gray-300 p-4">
+        <ul className="flex flex-col gap-1">
+          <h6 className="font-semibold text-white">Categorias</h6>
+          {routes.map((route) => (
+          <li key={route.url}>
+            <Link className="hover:text-white hover:underline" href={route.url}>
+              {route.name}
+            </Link>
           </li>
-          <li>
-            <Link className="text-gray-300 hover:text-white hover:border-b-1" href="/productos/cuadros">Cuadros</Link>
-          </li>
-          <li>
-            <Link className="text-gray-300 hover:text-white hover:border-b-1" href="/productos/separadores">Separadores</Link>
-          </li>
-          <li>  
-            <Link className="text-gray-300 hover:text-white hover:border-b-1" href="/productos/cajas">Cajas</Link>
-          </li>
-          <li>  
-            <Link className="text-gray-300 hover:text-white hover:border-b-1" href="/productos/otros">Otros</Link>
-          </li>
+        ))}
         </ul>
 
 
           <ul className="flex flex-col gap-1">
-            <h6 className="font-semibold">Contacto</h6>
-            <li>
-              <a className="flex items-center gap-2" href="" target="_blank"> <span className='flex items-center gap-2 text-gray-300 hover:text-white hover:border-b-1'><PhoneCall size={20}/> +54 9 2394-0417</span></a>
+            <h6 className="font-semibold text-white">Contacto</h6>
+            {contact.map((route) => (
+              <li key={route.url}>
+                <a className="flex items-center gap-2" href={route.url} target="_blank">{route.icon} <span className='hover:text-white hover:underline'>{route.name}</span></a>
             </li>
-            <li>
-              <a className="flex items-center gap-2" href="mailto:contact@lasernosekai.com"> <span className='flex items-center gap-2 text-gray-300 hover:text-white hover:border-b-1'><Mail size={20}/> contact@lasernosekai.com</span></a>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className='flex items-center gap-2 text-gray-300 hover:text-white hover:border-b-1'><MapPin size={20}/> Regina 2039, Don Torcuato, Buenos Aires, Argentina </span>
-            </li>
+            ))}
            </ul>
 
 
         <ul className="flex gap-4">
             <li>
-              <a href=""><Instagram></Instagram></a>
+              <a href="">instagram</a>
             </li>
             <li>
               <a href="">Tik tok</a>

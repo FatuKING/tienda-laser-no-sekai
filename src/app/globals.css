@@ -8,6 +8,7 @@
   font-family: var(--font-saira);
   --bg-violet-custom: #13002D;
   --bg-gradient-custom: linear-gradient(90deg, #13002D 0%, #A0006D 100%);
+  --title: var(--font-orbitron);
 }
 
 h1, h2, h3, h4, h5, h6 {

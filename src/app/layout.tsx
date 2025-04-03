@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { Orbitron, Saira_Semi_Condensed } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
-
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -37,23 +35,6 @@ export default function RootLayout({
         className={`${orbitron.variable} ${sairaSemiCondensed.variable} antialiased`}
       >
         <Header />
-
-        <nav className="flex justify-center w-screen">
-          <ul className="flex justify-around items-center w-2/3 h-12">
-            <li>
-              <Link href="/">Inicio</Link>
-            </li>
-            <li>
-              <Link href="/productos">Tienda</Link>
-            </li>
-            <li>
-              <Link href="/productos">Promociónes</Link>
-            </li>
-            <li>
-              <Link href="/ayuda">Ayuda</Link>
-            </li>
-          </ul>
-        </nav>
 
         {children}
 
